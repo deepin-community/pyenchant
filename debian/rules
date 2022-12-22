@@ -1,0 +1,50 @@
+#!/usr/bin/make -f
+
+#export DH_VERBOSE=1
+
+PYVERS=$(shell py3versions -vr)
+
+# try to detect libenchant package name
+LIBPACKAGENAME=$(shell dpkg -S `python3 -c 'from ctypes.util import find_library; print(find_library("enchant-2"))'`  | grep -o ^libenchant[^:]*  | head -n 1)
+ifneq (,$(findstring enchant,$(LIBPACKAGENAME)))
+LIBPACKAGENAME=libenchant-2-2
+endif
+
+clean:
+	rm -rf dist build
+	find . -name *\.py[co] -delete
+	find . -name __pycache__ -type d -empty -delete
+	dh_clean *-stamp
+
+build:
+build-arch:
+build-indep:
+
+install: $(PYVERS:%=install-python-%)
+	echo "shlibs:Depends=${LIBPACKAGENAME}" >> debian/python3-enchant.substvars
+	find debian/python3-enchant -type f -exec chmod -x {} \;
+	touch $@
+install-python-3.%:
+	python3.$* setup.py install \
+		--install-layout=deb \
+		--root debian/python3-enchant/
+
+binary-arch:
+
+binary-indep: build install
+	dh_testdir -i
+	dh_testroot -i
+	dh_installchangelogs -i
+	dh_installdocs -i
+	dh_python3 -i
+	dh_strip_nondeterminism -i
+	dh_compress -i -X.py
+	dh_fixperms -i
+	dh_installdeb -i
+	dh_gencontrol -i
+	dh_md5sums -i
+	dh_builddeb -i
+
+binary: binary-indep binary-arch
+
+.PHONY: build build-arch build-indep clean binary-indep binary-arch binary install

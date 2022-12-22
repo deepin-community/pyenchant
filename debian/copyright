@@ -1,0 +1,41 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Comment: This package was debianized by Piotr Ożarowski <piotr@debian.org>.
+Upstream-Contact: Ryan Kelly <rynklly@users.sourceforge.net>
+Source: https://pypi.org/project/pyenchant/
+
+Files: *
+Copyright: 2004-2009 Ryan Kelly
+License: LGPL-2.1+
+
+Files: enchant/checker/GtkSpellCheckerDialog.py
+Copyright: 2004-2005 Fredrik Corneliusson
+License: LGPL-2.1+
+
+Files: debian/*
+Copyright: 2006-2009 Piotr Ożarowski <piotr@debian.org>
+License: LGPL-2.1+
+
+License: LGPL-2.1+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 2.1 of the License, or (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+ .
+ In addition, as a special exception, you are
+ given permission to link the code of this program with
+ non-LGPL Spelling Provider libraries (eg: a MSFT Office
+ spell checker backend) and distribute linked combinations including
+ the two.  You must obey the GNU Lesser General Public License in all
+ respects for all of the code used other than said providers.  If you modify
+ this file, you may extend this exception to your version of the
+ file, but you are not obligated to do so.  If you do not wish to
+ do so, delete this exception statement from your version.
+ .
+ On Debian systems, the complete text of the GNU Library General Public
+ License can be found in the file `/usr/share/common-licenses/LGPL-2.1'.
+

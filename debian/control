@@ -1,0 +1,23 @@
+Source: pyenchant
+Section: python
+Priority: optional
+Maintainer: Piotr Ożarowski <piotr@debian.org>
+Uploaders: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+Build-Depends: debhelper-compat (= 12), libenchant-2-dev
+Build-Depends-Indep: dh-python,
+ python3-all,
+ python3-setuptools
+Standards-Version: 4.5.0
+Rules-Requires-Root: no
+Homepage: https://pyenchant.github.io/pyenchant/
+Vcs-Git: https://salsa.debian.org/python-team/packages/pyenchant.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/pyenchant
+
+Package: python3-enchant
+Architecture: all
+Depends: ${python3:Depends}, ${shlibs:Depends}, ${misc:Depends}
+Description: spellchecking library for Python 3
+ PyEnchant consists of Python bindings to the Enchant spellchecking
+ library and some wrapper classes. It includes all the functionality
+ of Enchant in a Pythonic object-oriented interface, and also provides
+ some higher-level functionality which is not available in the C API.
